@@ -1,15 +1,6 @@
-class Validator {
-  constructor(inputName) {
+export default class Validator {
+  validateUsername(inputName) {
     this.inputName = inputName;
-  }
-
-  validateUsername() {
-    if (new RegExp('^([a-z])([a-z0-9-_]+)([a-z]$)', 'igm').test(this.inputName) && !(new RegExp('[0-9]{4,}', 'gm').test(this.inputName))) {
-      return true;
-    } else {
-      return false;
-    }
+    return (/^[a-z]+[-\w]+[a-z]$/i.test(this.inputName)) && (!/\d{4}/.test(this.inputName));
   }
 }
-
-export default Validator;
